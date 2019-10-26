@@ -1,0 +1,364 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  #latitude: 
+  #longitude: 
+  latitude: !secret home_lattitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 260
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Detroit
+
+system_health:
+# Enables the frontend
+frontend: 
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+
+script: !include scripts.yaml
+
+# Enables configuration UI
+config:
+
+homekit:
+  auto_start: False
+#  entity_config:
+#    light.under_cabinet:
+#      name: Cabinet
+    # remote.harmony_hub:
+    #   name: Entertainment Center
+#       feature_list:
+#         - feature: play_pause
+#         - feature: toggle_mute
+  filter:
+    exclude_domains:
+      - automation
+      - script
+    #exclude_entities:
+      #- binary_sensor.living_room_thermostat_has_leaf
+      #- sensor.living_room_thermostat_temperature
+      
+http:
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+
+# Discover some devices automatically
+discovery:
+ssdp:
+zeroconf:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+mobile_app:
+
+hacs:
+  token: !secret github_token
+  python_script: true
+  theme: true
+  
+breaking_changes:
+
+camera:
+  - platform: nwsradar
+    station: DTX
+  - platform: nwsradar
+    station: GRR
+
+circadian_lighting:
+  sunset_offset: '-01:00'
+  sunrise_offset: '2:00'
+#   min_colortemp: 2200
+#   max_colortemp: 5300
+  interval: 300
+  transition: 300
+
+# Cloud
+#cloud:
+
+recorder:
+  purge_keep_days: 3
+  db_url: !secret mariadb_url
+  exclude:
+    domains:
+      - circadian_lighting
+    entities:
+      - sensor.circadian_lighting
+    event_types:
+      - service_removed
+      - service_executed
+      - platform_discovered
+      - homeassistant_start
+      - homeassistant_stop      
+      - feedreader
+      - service_registered
+      - call_service
+      - component_loaded
+      - logbook_entry
+      - system_log_event
+      - automation_triggered
+      - script_started
+      - timer_out_of_sync
+
+logger:
+  default: warning
+  logs:
+    custom_components.circadian_lighting: warning
+    #custom_components.circadian_lighting.sensor: debug
+    #custom_components.circadian_lighting.switch: debug
+
+lifx:
+  light:
+    - server: 192.168.1.10
+      broadcast: 192.168.30.71
+    - server: 192.168.1.10
+      broadcast: 192.168.30.72
+    - server: 192.168.1.10
+      broadcast: 192.168.30.73
+
+remote:
+  - platform: harmony
+    name: Harmony Hub
+    host: 192.168.30.14
+    activity: TV
+    
+input_boolean:
+  start_car_bool:
+    name: Start My Car
+    initial: off
+  morning_routine:
+    name: Workday Morning Routine
+  turn_up_stereo_vol_bool:
+    name: Stereo up
+    initial: off
+  turn_stereo_way_up_vol_bool:
+    name: Stereo way up
+    initial: off
+  turn_stereo_down_vol_bool:
+    name: Stereo Down
+    initial: off
+  stereo_mute:
+    name: Mute Stereo
+  stereo_unmute:
+    name: Unmute Stereo
+  stereo_semaphore:
+    name: _Stereo Semaphore
+    initial: off
+  backup_now:
+    name: Backup Hassio Now
+    initial: off
+
+ecobee:
+  api_key: !secret ecobee_api_key
+
+tplink:
+  discovery: false
+  switch:
+   - host: 192.168.30.51
+   - host: 192.168.30.52
+   - host: 192.168.30.53
+
+switch:
+  #- platform: wake_on_lan
+    #name: PC
+    #mac_address: "70-77-C2-6F-5F-77"
+
+  - platform: circadian_lighting
+    lights_rgb:
+      - light.bedroom_overhead_1
+      - light.bedroom_overhead_2
+      - light.tall_lamp
+    lights_ct:
+      - light.lampy
+      - light.lighty
+      - light.light_strippy
+#     min_brightness: 10
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+    hours: 5
+
+zone:
+  - name: Work
+    latitude: !secret work_lattitude
+    longitude: !secret work_longitude
+    radius: 250
+    icon: mdi:worker
+    
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+    
+history_graph:
+  gr1:
+    name: 1 HR CPU Graph
+    entities:
+      - sensor.cpu_temperature
+      - sensor.processor_use
+    hours_to_show: 1
+    refresh: 10
+
+  gr2:
+    name: 24 HR CPU Graph
+    entities:
+      - sensor.cpu_temperature
+      - sensor.processor_use
+    hours_to_show: 24
+
+  gr3:
+    name: Climate Graph
+    entities:
+      - sensor.dark_sky_temperature
+      - sensor.living_room_temperature
+      - sensor.bedroom_temperature
+      - sensor.living_room_humidity
+      - sensor.dining_room_table_temperature
+      - sensor.bedroom_temperature_2
+      - sensor.living_room_humidity_2
+      - sensor.dining_room_table_temperature_2
+    hours_to_show: 24
+
+group:
+  Lights:
+    entities:
+      - light.lampy
+      - light.lighty
+      - light.light_strippy
+
+  Indoor Climate:
+    entities:
+      - sensor.living_room_humidity
+      - history_graph.climate_graph
+
+  System Monitor:
+    entities:
+      - sensor.processor_use
+      - sensor.memory_free
+      - sensor.memory_use
+      - sensor.memory_use_percent
+      - sensor.disk_free
+      - sensor.disk_use
+      - sensor.disk_use_percent
+      - sensor.ipv4_address_enp4s0
+      - sensor.ipv6_address_enp4s0
+      - sensor.ipv4_address_wg0
+      - sensor.ipv6_address_wg0
+      - sensor.last_boot
+      - binary_sensor.workday_sensor
+
+  Internet Connection:
+    entities:
+      - sensor.speedtest_ping 
+      - sensor.speedtest_upload
+      - sensor.speedtest_download
+      - sensor.external_ip
+
+binary_sensor:
+  - platform: workday
+    country: US
+    province: MI
+  - platform: huesensor
+
+sensor:
+  - platform: huesensor
+  - platform: darksky
+    api_key: !secret darksky_key
+    forecast:
+      - 0
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+      
+  - platform: average
+    name: 'Average CPU Temperature'
+    entities:
+      - sensor.cpu_temperature
+    duration:
+      days: 1
+  - platform: average
+    name: 'Average CPU Usage'
+    entities:
+      - sensor.processor_use
+    duration:
+      days: 1
+  
+  - platform: systemmonitor
+    resources:
+      - type: disk_free
+        arg: /
+      - type: disk_use
+        arg: /
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: memory_use
+      - type: memory_use_percent
+      - type: processor_use
+      - type: load_1m
+      - type: load_5m
+      - type: ipv4_address
+        arg: enp4s0
+      - type: ipv6_address
+        arg: enp4s0
+      - type: ipv4_address
+        arg: wg0
+      - type: ipv6_address
+        arg: wg0
+      - type: last_boot
+
+  - platform: rest
+    name: ha_docker_version
+    resource: 'https://registry.hub.docker.com/v2/repositories/homeassistant/raspberrypi3-homeassistant/tags'
+    value_template: >-
+      {% set results = value_json.results %}
+      {%-set res-%}
+      {%-set pipe = joiner('|')-%}
+      {% for result in results if result.name |regex_search("\d+\.\d+\.\d+$") -%}
+        {{ pipe()}}{{result.name}}      
+      {% else %}        
+        -1 
+      {% endfor -%}
+      {% endset -%}
+      {% set res = res.split('|')|list -%}
+      {{res[0]}}
+    scan_interval: 1800
+      
+  - platform: rest
+    resource: http://icanhazip.com
+    name: external_ip
+    value_template: '{{ value }}'
+    scan_interval: 86400
+  
+  - platform: personalcapital
+    email: !secret per_cap_email
+    password: !secret per_cap_password
+    
+  - platform: uptime
+
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    # If errors occur, remove degree symbol below
+    unit_of_measurement: "C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
+    scan_interval: 1
