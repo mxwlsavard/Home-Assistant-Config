@@ -1,0 +1,248 @@
+- alias: Set Harmony activity using input_select
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+  action:
+    service: remote.turn_on
+    entity_id: remote.harmony_hub
+    data_template:
+      activity: '{% if is_state("input_select.harmony", "Harmony Goodnight") %} 31209504
+        {% elif is_state("input_select.harmony", "Watch Apple TV") %} 31223357 {%
+        elif is_state("input_select.harmony", "STEREO NULL") %} 32227994 {% elif is_state("input_select.harmony",
+        "Dim TV") %} 28940273 {% elif is_state("input_select.harmony", "VOLUP") %}
+        32228013 {% elif is_state("input_select.harmony", "Watch TV") %} 28741246
+        {% elif is_state("input_select.harmony", "Watch PC") %} 28774777 {% elif is_state("input_select.harmony",
+        "VOLDOWN") %} 32228033 {% else %} -1 {% endif %}'
+  id: 0d38ca289de943168e9ef8dc4672be66
+- alias: Start Car
+  initial_state: true
+  hide_entity: false
+  trigger:
+  - platform: state
+    entity_id: input_boolean.start_car_bool
+    to: 'on'
+  action:
+  - service: script.turn_on
+    entity_id: script.start_car_script
+  id: 6a4eb24b8cc24c9fb1070027c802c44f
+- alias: Notify Of New External IP
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: sensor.external_ip
+  condition:
+  - condition: template
+    value_template: '{% if trigger.from_state and trigger.to_state %} true {% else
+      %} false {% endif %}'
+  - condition: template
+    value_template: '{% if trigger.from_state.state == "unknown" %} false {% else
+      %} true {% endif %}'
+  - condition: template
+    value_template: '{% if trigger.to_state.state == "unknown" %} false {% else %}
+      true {% endif %}'
+  - condition: template
+    value_template: '{{ trigger.from_state.state != trigger.to_state.state }}'
+  action:
+  - service: script.notify_me
+    data_template:
+      message: Your External IP changed from {{ trigger.from_state.state }} to {{
+        trigger.to_state.state }}
+  id: 47eeba1266d14ffe8f46ce759d8cf85b
+- alias: Update Available Notification
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: updater.updater
+  action:
+  - service: notify.notify
+    data:
+      message: New HASS update is available!
+  id: f2d67db05f4a48e1b7c9f84308997b62
+- alias: Update Harmony input_select
+  hide_entity: false
+  trigger:
+    platform: state
+    entity_id: remote.harmony_hub
+  action:
+    service: input_select.select_option
+    data_template:
+      entity_id: input_select.harmony
+      option: '{{ states.remote.harmony_hub.attributes.current_activity }}'
+  id: 1096daec72904081af6a47f366977d41
+- alias: Turn Up the TV
+  hide_entity: false
+  trigger:
+  - platform: state
+    entity_id: input_boolean.turn_up_stereo_vol_bool
+    to: 'on'
+  action:
+  - service: remote.send_command
+    data:
+      entity_id: remote.harmony_hub
+      command:
+      - VolumeUp
+      device: 48040581
+      delay_secs: 0.1
+      num_repeats: 4
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.turn_up_stereo_vol_bool
+  id: a02b85a0cb5e47ef9910a9339f191bed
+- alias: Turn the TV Down
+  hide_entity: false
+  trigger:
+  - platform: state
+    entity_id: input_boolean.turn_stereo_down_vol_bool
+    to: 'on'
+  action:
+  - service: remote.send_command
+    data:
+      entity_id: remote.harmony_hub
+      command:
+      - VolumeDown
+      device: 48040581
+      delay_secs: 0.1
+      num_repeats: 4
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.turn_stereo_down_vol_bool
+  id: b14953bda50443118b873b41dd13fe37
+- alias: Mute Stereo
+  hide_entity: false
+  trigger:
+  - platform: state
+    entity_id: input_boolean.stereo_mute
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.stereo_unmute
+    to: 'off'
+  condition:
+    condition: state
+    entity_id: input_boolean.stereo_semaphore
+    state: 'off'
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.stereo_semaphore
+  - service: remote.send_command
+    data:
+      entity_id: remote.harmony_hub
+      command:
+      - Mute
+      device: 48040581
+      delay_secs: 0.1
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.stereo_unmute
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.stereo_mute
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.stereo_semaphore
+  id: 41e37b5560504d7f816a99527df4e09e
+- alias: Unmute Stereo
+  hide_entity: false
+  trigger:
+  - platform: state
+    entity_id: input_boolean.stereo_unmute
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.stereo_mute
+    to: 'off'
+  condition:
+    condition: state
+    entity_id: input_boolean.stereo_semaphore
+    state: 'off'
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.stereo_semaphore
+  - service: remote.send_command
+    data:
+      entity_id: remote.harmony_hub
+      command:
+      - Mute
+      device: 48040581
+      delay_secs: 0.1
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.stereo_unmute
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.stereo_mute
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.stereo_semaphore
+  id: 85cc8fe6dac342f68760b982f80aa1fc
+- alias: High CPU Notification
+  trigger:
+  - above: '30'
+    entity_id: sensor.processor_use
+    platform: numeric_state
+  action:
+  - data:
+      message: CPU used is {{ states.sensor.processor_use.state}}%!
+      title: Home Assistant CPU Alert
+    service: notify.notify
+  initial_state: true
+  id: 40cd64cbb07b48b5bd91d433ba2477ce
+- alias: Setup USPS Dependencies
+  initial_state: false
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: shell_command.setup_usps
+  id: 715dab62b26e4f49815b337d030ab90f
+- alias: Home Assistant Starting Up
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+  - data:
+      message: Home Assistant is starting up!
+      title: Home Assistant Alert
+    service: notify.notify
+  id: bebeaccb913646438a7261e0e433e308
+- alias: Notify - Home Assistant docker tag changed
+  trigger:
+  - platform: state
+    entity_id: sensor.ha_docker_version
+  action:
+  - data:
+      message: Home Assistant docker tag changed from {{ trigger.from_state.state
+        }} to {{ trigger.to_state.state }}
+      title: Home Assistant Alert
+    service: notify.notify
+  id: 8091c1bd257e4b9f8dad0ea4c439185a
+- id: '1563977738865'
+  alias: Turn on Lights When I Get To Work
+  trigger:
+  - entity_id: device_tracker.maxwells_iphone
+    event: enter
+    platform: zone
+    zone: zone.work
+  condition: []
+  action:
+  - data:
+      entity_id: light.lighty
+    service: light.turn_on
+  - data:
+      entity_id: light.lampy
+    service: light.turn_on
+  - data:
+      entity_id: light.light_strippy
+    service: light.turn_on
+  - data:
+      entity_id: light.tall_lamp
+    service: light.turn_on
+- id: '1569111356724'
+  alias: Update Circadian Lighting
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition:
+  - condition: state
+    entity_id: switch.circadian_lighting_circadian_lighting
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_off
+  - data:
+      entity_id: switch.circadian_lighting_circadian_lighting
+    service: switch.turn_on
