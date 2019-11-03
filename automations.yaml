@@ -170,7 +170,7 @@
   id: 85cc8fe6dac342f68760b982f80aa1fc
 - alias: High CPU Notification
   trigger:
-  - above: '30'
+  - above: '50'
     entity_id: sensor.processor_use
     platform: numeric_state
   action:
