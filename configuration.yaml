@@ -141,9 +141,9 @@ remote:
     activity: TV
     
 input_boolean:
-  start_car_bool:
-    name: Start My Car
-    initial: off
+  #start_car_bool:
+    #name: Start My Car
+    #initial: off
   morning_routine:
     name: Workday Morning Routine
   turn_up_stereo_vol_bool:
