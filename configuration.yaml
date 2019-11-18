@@ -186,7 +186,7 @@ switch:
       - light.bedroom_overhead_1
       - light.bedroom_overhead_2
       - light.tall_lamp
-    #lights_ct:
+    lights_ct:
       - light.lampy
       - light.lighty
       - light.light_strippy
