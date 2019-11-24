@@ -229,6 +229,7 @@ history_graph:
     entities:
       - sensor.dark_sky_temperature
       - sensor.living_room_temperature
+      - sensor.kitchen_temperature
       - sensor.bedroom_temperature
       - sensor.living_room_humidity
       - sensor.dining_room_table_temperature
