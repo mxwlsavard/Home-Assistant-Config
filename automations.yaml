@@ -246,3 +246,13 @@
   - data:
       entity_id: switch.circadian_lighting_circadian_lighting
     service: switch.turn_on
+- id: '1574916101876'
+  alias: Purge Recorder
+  description: ''
+  trigger:
+  - at: "01:00:00"
+    platform: time
+  condition: []
+  action:
+  - service: recorder.purge
+  
