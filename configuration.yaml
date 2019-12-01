@@ -229,13 +229,10 @@ history_graph:
     entities:
       - sensor.dark_sky_temperature
       - sensor.living_room_temperature
-      - sensor.kitchen_temperature
+      - sensor.downstairs_closet_temperature
       - sensor.bedroom_temperature
       - sensor.living_room_humidity
       - sensor.dining_room_table_temperature
-      - sensor.bedroom_temperature_2
-      - sensor.living_room_humidity_2
-      - sensor.dining_room_table_temperature_2
     hours_to_show: 24
 
 group:
