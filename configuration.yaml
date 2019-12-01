@@ -84,10 +84,10 @@ camera:
     station: GRR
 
 circadian_lighting:
-  sunset_offset: '02:00'
+  sunset_offset: '03:00'
   sunrise_offset: '2:00'
 #   min_colortemp: 2200
-  max_colortemp: 5000
+  #max_colortemp: 5000
   interval: 1000
   transition: 1000
 
