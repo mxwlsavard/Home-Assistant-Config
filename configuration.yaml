@@ -274,10 +274,10 @@ binary_sensor:
   - platform: workday
     country: US
     province: MI
-  - platform: huesensor
+  #- platform: huesensor
 
 sensor:
-  - platform: huesensor
+  #- platform: huesensor
   - platform: darksky
     api_key: !secret darksky_key
     forecast:
