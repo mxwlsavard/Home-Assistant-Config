@@ -124,6 +124,9 @@ logger:
     custom_components.circadian_lighting: warning
     #custom_components.circadian_lighting.sensor: debug
     #custom_components.circadian_lighting.switch: debug
+    
+auto_backup:
+  auto_purge: true
 
 lifx:
   light:
