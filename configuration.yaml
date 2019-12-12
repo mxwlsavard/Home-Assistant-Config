@@ -169,9 +169,6 @@ input_boolean:
     name: Backup Hassio Now
     initial: off
 
-ecobee:
-  api_key: !secret ecobee_api_key
-
 tplink:
   discovery: false
   switch:
