@@ -177,9 +177,6 @@ tplink:
    - host: 192.168.30.53
 
 switch:
-  #- platform: wake_on_lan
-    #name: PC
-    #mac_address: "70-77-C2-6F-5F-77"
 
   - platform: circadian_lighting
     lights_rgb:
@@ -274,10 +271,8 @@ binary_sensor:
   - platform: workday
     country: US
     province: MI
-  #- platform: huesensor
 
 sensor:
-  #- platform: huesensor
   - platform: darksky
     api_key: !secret darksky_key
     forecast:
@@ -323,23 +318,6 @@ sensor:
       - type: ipv6_address
         arg: wg0
       - type: last_boot
-
-  - platform: rest
-    name: ha_docker_version
-    resource: 'https://registry.hub.docker.com/v2/repositories/homeassistant/raspberrypi3-homeassistant/tags'
-    value_template: >-
-      {% set results = value_json.results %}
-      {%-set res-%}
-      {%-set pipe = joiner('|')-%}
-      {% for result in results if result.name |regex_search("\d+\.\d+\.\d+$") -%}
-        {{ pipe()}}{{result.name}}      
-      {% else %}        
-        -1 
-      {% endfor -%}
-      {% endset -%}
-      {% set res = res.split('|')|list -%}
-      {{res[0]}}
-    scan_interval: 1800
       
   - platform: rest
     resource: http://icanhazip.com
