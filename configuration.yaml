@@ -273,6 +273,10 @@ binary_sensor:
     province: MI
 
 sensor:
+  - platform: xfinity
+    username: !secret xfinity_email
+    password: !secret xfinity_password
+
   - platform: darksky
     api_key: !secret darksky_key
     forecast:
