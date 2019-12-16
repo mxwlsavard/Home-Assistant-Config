@@ -213,7 +213,6 @@ history_graph:
       - sensor.cpu_temperature
       - sensor.processor_use
     hours_to_show: 1
-    refresh: 10
 
   gr2:
     name: 24 HR CPU Graph
@@ -233,12 +232,25 @@ history_graph:
       - sensor.dining_room_table_temperature
     hours_to_show: 24
 
+  gr4:
+    name: Xfinity Data Usage
+    entities:
+      - sensor.xfinity_usage
+    hours_to_show: 24
+    
+  gr5:
+    name: Xfinity Data Usage (1 Mo)
+    entities:
+      - sensor.xfinity_usage
+    hours_to_show: 720
+
 group:
   Lights:
     entities:
       - light.lampy
       - light.lighty
       - light.light_strippy
+      - light.brighty
 
   Indoor Climate:
     entities:
@@ -267,6 +279,7 @@ group:
       - sensor.speedtest_upload
       - sensor.speedtest_download
       - sensor.external_ip
+      - sensor.xfinity_usage
 
 binary_sensor:
   - platform: workday
