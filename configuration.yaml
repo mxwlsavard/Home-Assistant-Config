@@ -28,22 +28,23 @@ config:
 
 homekit:
   auto_start: False
-#  entity_config:
-#    light.under_cabinet:
-#      name: Cabinet
-    # remote.harmony_hub:
-    #   name: Entertainment Center
-#       feature_list:
-#         - feature: play_pause
-#         - feature: toggle_mute
   filter:
-    exclude_domains:
-      - automation
-      - script
-    #exclude_entities:
-      #- binary_sensor.living_room_thermostat_has_leaf
-      #- sensor.living_room_thermostat_temperature
-      
+    include_entities:
+      - light.bedroom
+      - light.brighty
+      - light.lighty
+      - light.lampy
+      - light.light_strippy
+      - switch.bedroom_fan
+      - switch.nightstand
+      - climate.living_room
+      - sensor.living_room_humidity
+      - switch.kitchen_chilies
+      - input_boolean.stereo_mute
+      - input_boolean.stereo_unmute
+      - input_boolean.turn_stereo_down_vol_bool
+      - input_boolean.turn_up_stereo_vol_bool
+
 http:
 
 # Checks for available updates
