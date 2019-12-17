@@ -228,7 +228,7 @@
       entity_id: light.light_strippy
     service: light.turn_on
   - data:
-      entity_id: light.tall_lamp
+      entity_id: light.brighty
     service: light.turn_on
 - id: '1569111356724'
   alias: Update Circadian Lighting
