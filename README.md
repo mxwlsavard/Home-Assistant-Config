@@ -6,16 +6,14 @@ This is my Home Assistant installation.
 
 Description | value
 -- | --
-Number of entities | 134
-Number of sensors | 63
+Number of entities | 147
+Number of sensors | 75
 
 
 
 ## The custom_components that I use
 
 ### [Personal Capital](https://github.com/custom-components/sensor.personalcapital/blob/master/README.md)
-
-### [Hue sensor custom component](https://github.com/robmarkcole/Hue-sensors-HASS)
 
 ### [National Weather Service Radar](https://www.home-assistant.io/components/nws)
 
@@ -25,11 +23,15 @@ Number of sensors | 63
 
 ### [Average](https://github.com/Limych/ha-average)
 
-### [HACS (Home Assistant Community Store)](https://custom-components.github.io/hacs)
-
 ### [Generate readme](https://github.com/custom-components/readme)
 
 _Generates this awesome readme file._
+
+### [Xfinity Usage](https://github.com/robert-alfaro/xfinity-usage)
+
+### [HACS (Home Assistant Community Store)](https://hacs.xyz)
+
+### [Auto Backup](https://github.com/jcwillox/hass-auto-backup)
 
 
 ***
