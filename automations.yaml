@@ -49,7 +49,7 @@
       - VolumeUp
       device: 48040581
       delay_secs: 0.1
-      num_repeats: 4
+      num_repeats: 8
   - service: input_boolean.turn_off
     entity_id: input_boolean.turn_up_stereo_vol_bool
   id: a02b85a0cb5e47ef9910a9339f191bed
@@ -67,7 +67,7 @@
       - VolumeDown
       device: 48040581
       delay_secs: 0.1
-      num_repeats: 4
+      num_repeats: 8
   - service: input_boolean.turn_off
     entity_id: input_boolean.turn_stereo_down_vol_bool
   id: b14953bda50443118b873b41dd13fe37
