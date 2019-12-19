@@ -18,8 +18,7 @@ Number of sensors | {{states.sensor | count}}
 ## The custom_components that I use
 {% for integration in custom_components %}
 ### [{{integration.name}}]({{integration.documentation}})
-{% if integration.domain in custom_component_descriptions %}
-_{{custom_component_descriptions[integration.domain]}}_
+{% if integration.domain in custom_component_descriptions %} _{{custom_component_descriptions[integration.domain]}}_
 {% endif -%}
 {% endfor -%}
 {% endif %}

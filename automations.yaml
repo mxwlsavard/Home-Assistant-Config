@@ -67,7 +67,7 @@
       - VolumeDown
       device: 48040581
       delay_secs: 0.1
-      num_repeats: 8
+      num_repeats: 2
   - service: input_boolean.turn_off
     entity_id: input_boolean.turn_stereo_down_vol_bool
   id: b14953bda50443118b873b41dd13fe37
