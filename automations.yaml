@@ -214,4 +214,4 @@
       data:
         entity_id: light.lighty
         brightness: 130
-        rgb_color: [255,0,0]
+        rgb_color: [255,146,39]
