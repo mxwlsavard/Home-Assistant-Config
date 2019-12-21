@@ -194,7 +194,7 @@ switch:
 speedtestdotnet:
   scan_interval:
     minutes: 30
-    hours: 5
+    hours: 10
 
 zone:
   - name: Work
