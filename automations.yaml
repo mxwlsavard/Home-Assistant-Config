@@ -213,5 +213,5 @@
     - service: light.turn_on
       data:
         entity_id: light.lighty
-        brightness: 130
+        brightness_pct: 10
         rgb_color: [255,146,39]
