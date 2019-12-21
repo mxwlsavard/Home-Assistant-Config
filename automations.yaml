@@ -204,3 +204,14 @@
   - data:
       keep_days: 7
     service: auto_backup.snapshot_full
+- id: llmor
+  alias: Test Lifx Colors
+  trigger:
+  - at: '05:00'
+    platform: time
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.lighty
+        brightness: 130
+        rgb_color: [255,0,0]
