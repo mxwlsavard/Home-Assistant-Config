@@ -1,0 +1,72 @@
+- id: '1577413410296'
+  name: Cats Home Alone
+  entities:
+    light.brighty:
+      brightness: 132
+      effect: none
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Brighty
+      hs_color:
+      - 29.151
+      - 83.137
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 255
+      - 146
+      - 43
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.577
+      - 0.386
+    light.lampy:
+      brightness: 132
+      color_temp: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Lampy
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.light_strippy:
+      brightness: 132
+      color_temp: 400
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      friendly_name: Light Strippy
+      max_mireds: 400
+      min_mireds: 111
+      state: 'on'
+      supported_features: 55
+    light.lighty:
+      brightness: 115
+      color_temp: 454
+      effect_list:
+      - effect_pulse
+      - effect_stop
+      friendly_name: Lighty
+      max_mireds: 666
+      min_mireds: 250
+      state: 'on'
+      supported_features: 39
+    remote.harmony_hub:
+      current_activity: TV
+      friendly_name: Harmony Hub
+      state: 'on'
+      supported_features: 0
+    switch.circadian_lighting_circadian_lighting:
+      brightness: 45.49854924470976
+      friendly_name: Circadian Lighting
+      hs_color:
+      - 29.717
+      - 83.137
+      icon: mdi:theme-light-dark
+      state: 'on'
