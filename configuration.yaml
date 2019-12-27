@@ -21,6 +21,8 @@ frontend:
 
 automation: !include automations.yaml
 
+scene: !include scenes.yaml
+
 script: !include scripts.yaml
 
 # Enables configuration UI
