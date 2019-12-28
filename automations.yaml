@@ -210,15 +210,18 @@
   - at: '12:00'
     platform: time
   action:
-    - service: light.turn_on
-      data:
-        entity_id:
-         - light.lighty
-         - light.lampy
-         - light.brighty
-         - light.light_strippy
-        brightness_pct: 10
-        rgb_color: [255,146,39]
+  - service: light.turn_on
+    data:
+      entity_id:
+      - light.lighty
+      - light.lampy
+      - light.brighty
+      - light.light_strippy
+      brightness_pct: 10
+      rgb_color:
+      - 255
+      - 146
+      - 39
 - id: hacsnewrepo
   alias: Create a notification when somethig is added to HACS
   trigger:
@@ -228,31 +231,65 @@
       action: registration
   condition:
     condition: template
-    value_template: "{{ trigger.event.data.repository is defined }}"
+    value_template: '{{ trigger.event.data.repository is defined }}'
   action:
     service: persistent_notification.create
     data_template:
       title: New repository in HACS
-      message: >-
-        {% set repo = trigger.event.data.repository %}
-        {% set id = trigger.event.data.repository_id %}
-        [{{ repo }}](/hacs/repository/{{ id }})
-        was just added to HACS.
+      message: '{% set repo = trigger.event.data.repository %} {% set id = trigger.event.data.repository_id
+        %} [{{ repo }}](/hacs/repository/{{ id }}) was just added to HACS.'
 - id: hacspendingupdate
   alias: Create a notification when there is updates pending in HACS
   trigger:
     platform: state
     entity_id: sensor.hacs
   condition:
-    - condition: template
-      value_template: "{{ states(trigger.entity_id) != 'unknown'}}"
-    - condition: template
-      value_template: "{{ (states(trigger.entity_id) | float) != 0}}"
+  - condition: template
+    value_template: '{{ states(trigger.entity_id) != ''unknown''}}'
+  - condition: template
+    value_template: '{{ (states(trigger.entity_id) | float) != 0}}'
   action:
     service: persistent_notification.create
     data_template:
       title: Updates pending in HACS
-      message: >-
-        {% for repo in state_attr(trigger.entity_id, 'repositories') %}
-          **{{ repo.display_name }}** _{{ repo["installed version"] }}_ -> _{{ repo["available version"] }}_
-        {% endfor %}
+      message: "{% for repo in state_attr(trigger.entity_id, 'repositories') %}\n\
+        \  **{{ repo.display_name }}** _{{ repo[\"installed version\"] }}_ -> _{{\
+        \ repo[\"available version\"] }}_\n{% endfor %}"
+- id: '1577425794405'
+  alias: Leave Home
+  description: ''
+  trigger:
+  - entity_id: device_tracker.maxwells_iphone
+    event: leave
+    platform: zone
+    zone: zone.home
+  condition:
+  - after: 08:00
+    before: '22:00'
+    condition: time
+  action:
+  - scene: scene.cats_home_alone
+- id: '1577426720866'
+  alias: Nobody Home - Morning
+  description: ''
+  trigger:
+  - at: 09:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: device_tracker.maxwells_iphone
+    state: not_home
+  action:
+  - scene: scene.cats_home_alone
+- id: '1577490659750'
+  alias: Nobody Home - Night
+  description: ''
+  trigger:
+  - at: 00:00
+    platform: time
+  condition:
+  - condition: state
+    entity_id: device_tracker.maxwells_iphone
+    state: not_home
+  action:
+  - scene: scene.nobody_home_night

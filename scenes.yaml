@@ -1,6 +1,16 @@
 - id: '1577413410296'
   name: Cats Home Alone
   entities:
+    light.bedroom:
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Bedroom
+      is_hue_group: true
+      max_mireds: 500
+      min_mireds: 153
+      state: 'off'
+      supported_features: 63
     light.brighty:
       brightness: 132
       effect: none
@@ -9,19 +19,19 @@
       - random
       friendly_name: Brighty
       hs_color:
-      - 29.151
-      - 83.137
+      - 28.846
+      - 81.569
       max_mireds: 500
       min_mireds: 153
       rgb_color:
       - 255
       - 146
-      - 43
+      - 46
       state: 'on'
       supported_features: 63
       xy_color:
-      - 0.577
-      - 0.386
+      - 0.576
+      - 0.385
     light.lampy:
       brightness: 132
       color_temp: 400
@@ -47,8 +57,8 @@
       state: 'on'
       supported_features: 55
     light.lighty:
-      brightness: 115
-      color_temp: 454
+      brightness: 32
+      color_temp: 292
       effect_list:
       - effect_pulse
       - effect_stop
@@ -62,11 +72,45 @@
       friendly_name: Harmony Hub
       state: 'on'
       supported_features: 0
+    switch.bedroom_fan:
+      friendly_name: Bedroom Fan
+      state: 'off'
     switch.circadian_lighting_circadian_lighting:
-      brightness: 45.49854924470976
+      brightness: 100
       friendly_name: Circadian Lighting
       hs_color:
-      - 29.717
-      - 83.137
+      - 27.227
+      - 46.667
       icon: mdi:theme-light-dark
       state: 'on'
+    switch.nightstand:
+      friendly_name: Nightstand
+      state: 'off'
+- id: '1577494779556'
+  name: Nobody Home - Night
+  entities:
+    group.all_lights:
+      auto: true
+      entity_id:
+      - light.bedroom
+      - light.bedroom_overhead_1
+      - light.bedroom_overhead_2
+      - light.brighty
+      - light.lampy
+      - light.light_strippy
+      - light.lighty
+      friendly_name: all lights
+      hidden: true
+      order: 7
+      state: 'off'
+    remote.harmony_hub:
+      current_activity: PowerOff
+      friendly_name: Harmony Hub
+      state: 'off'
+      supported_features: 0
+    switch.bedroom_fan:
+      friendly_name: Bedroom Fan
+      state: 'off'
+    switch.nightstand:
+      friendly_name: Nightstand
+      state: 'off'
