@@ -23,8 +23,6 @@
         false
       {% elif not states.sensor.living_room_humidity %}
         false
-      {% elif not states.switch.kitchen_chilies %}
-        false
       {% elif not states.input_boolean.stereo_mute %}
         false
       {% elif not states.input_boolean.stereo_unmute %}
