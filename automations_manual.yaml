@@ -39,3 +39,7 @@
     timeout: 00:5  # Waits 15 minutes
     continue_on_timeout: false
   - service: homekit.start
+  - data:
+      message: HomeKit enabled devices available. HomeKit component is starting!
+      title: HomeKit Status Alert
+    service: notify.notify
