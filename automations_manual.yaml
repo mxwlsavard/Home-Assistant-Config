@@ -1,0 +1,41 @@
+- id: 'Start HomeKit'
+  alias: 'Start HomeKit'
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - wait_template: >-
+      {% if not states.light.bedroom %}
+        false
+      {% elif not states.light.brighty %}
+        false
+      {% elif not states.light.lighty %}
+        false
+      {% elif not states.light.lampy %}
+        false
+      {% elif not states.light.light_strippy %}
+        false
+      {% elif not states.switch.bedroom_fan %}
+        false
+      {% elif not states.switch.nightstand %}
+        false
+      {% elif not states.climate.living_room %}
+        false
+      {% elif not states.sensor.living_room_humidity %}
+        false
+      {% elif not states.switch.kitchen_chilies %}
+        false
+      {% elif not states.input_boolean.stereo_mute %}
+        false
+      {% elif not states.input_boolean.stereo_unmute %}
+        false
+      {% elif not states.input_boolean.turn_stereo_down_vol_bool %}
+        false
+      {% elif not states.input_boolean.turn_up_stereo_vol_bool %}
+        false
+      {% else %}
+        true
+      {% endif %}
+    timeout: 00:5  # Waits 15 minutes
+    continue_on_timeout: false
+  - service: homekit.start
