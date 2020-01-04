@@ -34,6 +34,17 @@
       {% else %}
         true
       {% endif %}
-    timeout: 00:5  # Waits 15 minutes
+    timeout: 00:05  # Waits 15 minutes
     continue_on_timeout: false
   - service: homekit.start
+  
+- id: "Notify Snapshot Failure"
+  alias: "Notify Snapshot Failure"
+  trigger:
+    platform: event
+    event_type: auto_backup.snapshot_failed
+  action:
+    service: persistent_notification.create
+    data_template:
+      title: "Snapshot Failed."
+      message: "Name: {{ trigger.event.data.name }}\nError: {{ trigger.event.data.error }}"
