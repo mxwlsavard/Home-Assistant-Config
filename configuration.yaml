@@ -26,6 +26,8 @@ scene: !include scenes.yaml
 
 script: !include scripts.yaml
 
+python_script:
+
 # Enables configuration UI
 config:
 
