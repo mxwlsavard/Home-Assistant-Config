@@ -74,11 +74,6 @@ logbook:
 map:
 
 mobile_app:
-
-hacs:
-  token: !secret github_token
-  python_script: true
-  theme: true
   
 breaking_changes:
 
