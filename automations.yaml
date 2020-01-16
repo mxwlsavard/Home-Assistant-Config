@@ -202,8 +202,14 @@
   condition: []
   action:
   - data:
+      addon: core_mariadb
+    service: hassio.addon_stop
+  - data:
       keep_days: 7
     service: auto_backup.snapshot_full
+  - data:
+      addon: core_mariadb
+    service: hassio.addon_start
 - id: llmor
   alias: Test Lifx Colors
   trigger:
@@ -293,3 +299,14 @@
     state: not_home
   action:
   - scene: scene.nobody_home_night
+- id: '1578850811547'
+  alias: Test Harmony Hub
+  description: ''
+  trigger:
+  - entity_id: remote.harmony_hub
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - entity_id: light.lampy
+    service: light.toggle
