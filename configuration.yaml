@@ -94,7 +94,7 @@ circadian_lighting:
   transition: 1000
 
 # Cloud
-#cloud:
+cloud:
 
 recorder:
   purge_keep_days: 30
