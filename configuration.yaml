@@ -32,7 +32,7 @@ python_script:
 config:
 
 homekit:
-  auto_start: False
+  auto_start: True
   filter:
     include_entities:
       - light.bedroom
