@@ -207,6 +207,7 @@
   - data:
       keep_days: 7
     service: auto_backup.snapshot_full
+  - delay: 00:00:10
   - data:
       addon: core_mariadb
     service: hassio.addon_start
