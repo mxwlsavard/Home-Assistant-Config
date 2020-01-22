@@ -34,7 +34,7 @@
       {% else %}
         true
       {% endif %}
-    timeout: 00:05  # Waits 15 minutes
+    timeout: 00:05  # Waits up to 5 minutes
     continue_on_timeout: false
   - service: homekit.start
   
@@ -58,3 +58,5 @@
     - service: hassio.addon_start
       data:
         addon: core_git_pull
+    - delay: 00:00:10
+    - service: homeassistant.restart
