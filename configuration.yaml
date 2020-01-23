@@ -359,3 +359,6 @@ sensor:
     unit_of_measurement: "C"
     value_template: '{{ value | multiply(0.001) | round(1) }}'
     scan_interval: 60
+    
+shell_command:
+  git_pull: git pull
