@@ -1,0 +1,6 @@
+*
+!configuration.yaml
+!README.md
+!scripts.yaml
+!automations.yaml
+!**/.gitignore
