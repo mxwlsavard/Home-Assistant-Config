@@ -127,7 +127,7 @@ logger:
   logs:
     custom_components.circadian_lighting: warning
     #custom_components.circadian_lighting.sensor: debug
-    #custom_components.circadian_lighting.switch: debug
+    homeassistant.components.shell_command: debug
     
 auto_backup:
   auto_purge: true
