@@ -311,3 +311,12 @@
   action:
   - entity_id: light.lampy
     service: light.toggle
+- id: '1579758370913'
+  alias: Git Pull
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: git-pull
+  condition: []
+  action:
+  - service: shell_command.git_pull
