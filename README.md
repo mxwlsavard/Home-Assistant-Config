@@ -9,8 +9,8 @@ Description | value
 Home Assistant install type | [Hass.io](https://github.com/home-assistant/hassio-installer)
 Operating System | Fedora 31
 Hardware | Intel i5 3570k
-Number of entities | 147
-Number of sensors | 75
+Number of entities | 204
+Number of sensors | 111
 
 
 
@@ -24,17 +24,16 @@ Number of sensors | 75
 
 ### [Breaking Changes](https://github.com/custom-components/breaking_changes)
 
-### [Average](https://github.com/Limych/ha-average)
-
 ### [Generate readme](https://github.com/custom-components/readme)
-
-_Generates this awesome readme file._
+ _Generates this awesome readme file._
 
 ### [Xfinity Usage](https://github.com/robert-alfaro/xfinity-usage)
 
-### [HACS (Home Assistant Community Store)](https://hacs.xyz)
+### [Average](https://github.com/Limych/ha-average)
 
 ### [Auto Backup](https://github.com/jcwillox/hass-auto-backup)
+
+### [HACS (Home Assistant Community Store)](https://hacs.xyz)
 
 
 ***
