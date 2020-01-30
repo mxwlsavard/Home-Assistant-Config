@@ -86,8 +86,8 @@ camera:
     station: GRR
 
 circadian_lighting:
-  sunset_offset: '02:00'
-  sunrise_offset: '2:00'
+  sunset_offset: '02:30'
+  sunrise_offset: '1:00'
   min_colortemp: 2200
   #max_colortemp: 5000
   interval: 1000
@@ -361,4 +361,4 @@ sensor:
     scan_interval: 60
     
 shell_command:
-  git_pull: git config core.sshCommand 'ssh -i .ssh/id_ed25519 -F /dev/null'; git pull
+  git_pull: id > banana.txt; git config core.sshCommand 'ssh -i ./.ssh/id_ed25519'; git pull
