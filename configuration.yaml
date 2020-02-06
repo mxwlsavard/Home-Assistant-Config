@@ -86,7 +86,7 @@ camera:
     station: GRR
 
 circadian_lighting:
-  sunset_offset: '02:00'
+  sunset_offset: '02:30'
   sunrise_offset: '2:00'
   min_colortemp: 2200
   #max_colortemp: 5000
@@ -302,19 +302,6 @@ sensor:
       - summary
       - icon
       - temperature
-      
-  - platform: average
-    name: 'Average CPU Temperature'
-    entities:
-      - sensor.cpu_temperature
-    duration:
-      days: 1
-  - platform: average
-    name: 'Average CPU Usage'
-    entities:
-      - sensor.processor_use
-    duration:
-      days: 1
   
   - platform: systemmonitor
     resources:
