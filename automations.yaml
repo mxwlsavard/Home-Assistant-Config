@@ -194,12 +194,16 @@
       entity_id: switch.circadian_lighting_circadian_lighting
     service: switch.turn_on
 - id: '1576648002901'
-  alias: Nightly Snapshot
+  alias: Weekly Snapshot
   description: ''
   trigger:
   - at: 02:00
     platform: time
-  condition: []
+  condition:
+  - after: 01:01:01
+    condition: time
+    weekday:
+    - sun
   action:
   - data:
       addon: core_mariadb
@@ -311,3 +315,12 @@
   action:
   - entity_id: light.lampy
     service: light.toggle
+- id: '1579758370913'
+  alias: Git Pull
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: git-pull
+  condition: []
+  action:
+  - service: shell_command.git_pull
