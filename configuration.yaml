@@ -198,12 +198,12 @@ speedtestdotnet:
     minutes: 30
     hours: 10
 
-zone:
-  - name: Work
-    latitude: !secret work_lattitude
-    longitude: !secret work_longitude
-    radius: 250
-    icon: mdi:worker
+#zone:
+#  - name: Work
+#    latitude: !secret work_lattitude
+#    longitude: !secret work_longitude
+#    radius: 250
+#    icon: mdi:worker
     
 weather:
   - platform: darksky
