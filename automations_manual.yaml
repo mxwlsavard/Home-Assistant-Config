@@ -60,3 +60,27 @@
         addon: core_git_pull
     - delay: 00:00:10
     - service: homeassistant.restart
+
+- id: 'NightlySnapshot'
+  alias: Nightly Snapshot
+  description: ''
+  trigger:
+  - at: 02:00
+    platform: time
+  condition:
+  - after: 01:01:01
+    condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+  action:
+  - data:
+      keep_days: 7
+      exclude:
+        addons:
+          - MariaDB
+    service: auto_backup.snapshot_full
