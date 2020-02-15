@@ -323,4 +323,7 @@
     webhook_id: git-pull
   condition: []
   action:
+  - data:
+      addon: git_pull
+    service: hassio.addon_start
   - service: shell_command.git_pull
