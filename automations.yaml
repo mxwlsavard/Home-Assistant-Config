@@ -324,5 +324,5 @@
   condition: []
   action:
   - data:
-      addon: git_pull
+      addon: core_git_pull
     service: hassio.addon_start

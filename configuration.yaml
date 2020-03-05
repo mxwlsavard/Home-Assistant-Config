@@ -86,7 +86,7 @@ camera:
     station: GRR
 
 circadian_lighting:
-  sunset_offset: '02:00'
+  sunset_offset: '01:30'
   sunrise_offset: '1:00'
   min_colortemp: 2200
   #max_colortemp: 5000
@@ -183,14 +183,18 @@ tplink:
 switch:
 
   - platform: circadian_lighting
-    lights_rgb:
+#    lights_rgb:
+    lights_ct:
       - light.bedroom_overhead_1
       - light.bedroom_overhead_2
       - light.brighty
-    lights_ct:
+      - light.hallway_1
+#    lights_ct:
       - light.lampy
       - light.lighty
       - light.light_strippy
+      - light.hallway_2
+      - light.hallway_3
 #     min_brightness: 10
 
 speedtestdotnet:
