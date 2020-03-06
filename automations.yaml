@@ -23,7 +23,6 @@
         trigger.to_state.state }}
     service: notify.notify
   initial_state: true
-  hide_entity: false
 - id: f2d67db05f4a48e1b7c9f84308997b62
   alias: Update Available Notification
   trigger:
@@ -34,9 +33,7 @@
       message: New HASS update is available!
     service: notify.mobile_app_maxwells_iphone
   initial_state: true
-  hide_entity: false
 - alias: Turn Up the TV
-  hide_entity: false
   trigger:
   - platform: state
     entity_id: input_boolean.turn_up_stereo_vol_bool
@@ -54,7 +51,6 @@
     entity_id: input_boolean.turn_up_stereo_vol_bool
   id: a02b85a0cb5e47ef9910a9339f191bed
 - alias: Turn the TV Down
-  hide_entity: false
   trigger:
   - platform: state
     entity_id: input_boolean.turn_stereo_down_vol_bool
@@ -72,7 +68,6 @@
     entity_id: input_boolean.turn_stereo_down_vol_bool
   id: b14953bda50443118b873b41dd13fe37
 - alias: Mute Stereo
-  hide_entity: false
   trigger:
   - platform: state
     entity_id: input_boolean.stereo_mute
@@ -102,7 +97,6 @@
     entity_id: input_boolean.stereo_semaphore
   id: 41e37b5560504d7f816a99527df4e09e
 - alias: Unmute Stereo
-  hide_entity: false
   trigger:
   - platform: state
     entity_id: input_boolean.stereo_unmute
