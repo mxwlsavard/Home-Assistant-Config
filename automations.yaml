@@ -326,3 +326,12 @@
   - data:
       addon: core_git_pull
     service: hassio.addon_start
+- id: '1583466105151'
+  alias: Turn off all lights
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - data: {}
+    entity_id: all
+    service: light.turn_off
