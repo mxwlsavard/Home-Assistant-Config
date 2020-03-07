@@ -198,6 +198,7 @@ switch:
       - light.light_strippy
       - light.hallway_2
       - light.hallway_3
+      - light.dinette
 #     min_brightness: 10
 
 speedtestdotnet:
