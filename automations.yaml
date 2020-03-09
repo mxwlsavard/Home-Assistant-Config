@@ -329,3 +329,12 @@
   - data: {}
     entity_id: all
     service: light.turn_off
+- id: '1583594952643'
+  alias: Turn on all lights
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - data: {}
+    entity_id: all
+    service: light.turn_on
