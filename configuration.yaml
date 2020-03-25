@@ -52,6 +52,7 @@ homekit:
       - light.hallway_1
       - light.hallway_2
       - light.hallway_3
+      - light.dinette
 
 http:
 
