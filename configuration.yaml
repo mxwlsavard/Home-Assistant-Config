@@ -53,6 +53,8 @@ homekit:
       - light.hallway_2
       - light.hallway_3
       - light.dinette
+      - light.office_1
+      - light.office_2
 
 http:
 
@@ -200,6 +202,8 @@ switch:
       - light.hallway_2
       - light.hallway_3
       - light.dinette
+      - light.office_1
+      - light.office_2
 #     min_brightness: 10
 
 speedtestdotnet:
