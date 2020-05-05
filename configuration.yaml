@@ -221,44 +221,6 @@ speedtestdotnet:
 weather:
   - platform: darksky
     api_key: !secret darksky_key
-    
-history_graph:
-  gr1:
-    name: 1 HR CPU Graph
-    entities:
-      - sensor.cpu_temperature
-      - sensor.processor_use
-    hours_to_show: 1
-
-  gr2:
-    name: 24 HR CPU Graph
-    entities:
-      - sensor.cpu_temperature
-      - sensor.processor_use
-    hours_to_show: 24
-
-  gr3:
-    name: Climate Graph
-    entities:
-      - sensor.dark_sky_temperature
-      - sensor.living_room_temperature
-      - sensor.downstairs_closet_temperature
-      - sensor.bedroom_temperature
-      - sensor.living_room_humidity
-      - sensor.dining_room_table_temperature
-    hours_to_show: 24
-
-  gr4:
-    name: Xfinity Data Usage
-    entities:
-      - sensor.xfinity_usage
-    hours_to_show: 24
-    
-  gr5:
-    name: Xfinity Data Usage (1 Mo)
-    entities:
-      - sensor.xfinity_usage
-    hours_to_show: 720
 
 group:
   Lights:
