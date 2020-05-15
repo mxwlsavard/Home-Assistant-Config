@@ -96,8 +96,8 @@ circadian_lighting:
   #sunrise_offset: '1:00'
   min_colortemp: 2200
   #max_colortemp: 5000
-  interval: 600
-  transition: 590
+  interval: 180
+  transition: 180
 
 # Cloud
 cloud:
