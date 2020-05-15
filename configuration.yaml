@@ -55,6 +55,7 @@ homekit:
       - light.dinette
       - light.office_1
       - light.office_2
+      - light.living_room_1
 
 http:
 
@@ -204,6 +205,7 @@ switch:
       - light.dinette
       - light.office_1
       - light.office_2
+      - light.living_room_1
 #     min_brightness: 10
 
 speedtestdotnet:
@@ -229,6 +231,7 @@ group:
       - light.lighty
       - light.light_strippy
       - light.brighty
+      - light.living_room_1
 
   Indoor Climate:
     entities:
