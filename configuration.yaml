@@ -95,7 +95,7 @@ camera:
 circadian_lighting:
   #sunset_offset: '00:30'
   #sunrise_offset: '1:00'
-  sunset_time: '11:00:00'
+  #sunset_time: '11:00:00'
   min_colortemp: 2200
   #max_colortemp: 4800
   interval: 180
