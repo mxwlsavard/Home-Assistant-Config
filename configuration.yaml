@@ -36,14 +36,14 @@ homekit:
   filter:
     include_entities:
       - light.bedroom
-      - light.brighty
+      - light.bedroom_1
+      - light.dinette_1
       - light.lighty
       - light.lampy
       - light.light_strippy
       - switch.bedroom_fan
       - switch.nightstand
       - climate.living_room
-      - sensor.living_room_humidity
       - switch.kitchen_chilies
       - input_boolean.stereo_mute
       - input_boolean.stereo_unmute
@@ -193,8 +193,8 @@ switch:
   - platform: circadian_lighting
 #    lights_rgb:
     lights_ct:
-      - light.bedroom_overhead_1
-      - light.bedroom_overhead_2
+      - light.bedroom_1
+      - light.dinette_1
       - light.brighty
       - light.hallway_1
 #    lights_ct:
