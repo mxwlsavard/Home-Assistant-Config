@@ -38,6 +38,7 @@ homekit:
       - light.bedroom
       - light.bedroom_1
       - light.dinette_1
+      - light.dinette_2
       - light.lighty
       - light.lampy
       - light.light_strippy
@@ -195,6 +196,7 @@ switch:
     lights_ct:
       - light.bedroom_1
       - light.dinette_1
+      - light.dinette_2
       - light.brighty
       - light.hallway_1
 #    lights_ct:
