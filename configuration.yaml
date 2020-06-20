@@ -208,8 +208,8 @@ switch:
       - light.hallway_2
       - light.hallway_3
       - light.dinette
-      - light.office_1
-      - light.office_2
+      #- light.office_1
+      #- light.office_2
       - light.living_room_1
 #     min_brightness: 10
 
