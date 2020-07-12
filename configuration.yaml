@@ -49,6 +49,7 @@ homekit:
       - switch.kitchen_chilies
       - input_boolean.stereo_mute
       - input_boolean.stereo_unmute
+      - switch.circadian_lighting_circadian_lighting
       - input_boolean.turn_stereo_down_vol_bool
       - input_boolean.turn_up_stereo_vol_bool
       - light.hallway_1
