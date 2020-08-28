@@ -320,10 +320,6 @@ sensor:
     name: external_ip
     value_template: '{{ value }}'
     scan_interval: 86400
-  
-  - platform: personalcapital
-    email: !secret per_cap_email
-    password: !secret per_cap_password
     
   - platform: uptime
 
