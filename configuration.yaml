@@ -102,7 +102,7 @@ circadian_lighting:
   #sunrise_offset: '2:00'
   #sunset_time: '11:00:00'
   min_colortemp: 2200
-  max_colortemp: 4800
+  max_colortemp: 5200
   interval: 300
   transition: 300
 
