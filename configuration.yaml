@@ -216,7 +216,7 @@ switch:
       - light.living_room_1
       - light.hue_play_1
       - light.hue_play_2
-#     min_brightness: 10
+     min_brightness: 20
 
 speedtestdotnet:
   scan_interval:
