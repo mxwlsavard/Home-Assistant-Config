@@ -91,12 +91,6 @@ mobile_app:
   
 breaking_changes:
 
-camera:
-  - platform: nwsradar
-    station: DTX
-  - platform: nwsradar
-    station: GRR
-
 circadian_lighting:
   sunset_offset: '00:30'
   sunrise_offset: '1:00'
