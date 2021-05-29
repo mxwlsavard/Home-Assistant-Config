@@ -32,7 +32,7 @@ python_script:
 config:
 
 homekit:
-  auto_start: True
+  # auto_start: True
   filter:
     include_entities:
       #- light.bedroom
@@ -224,10 +224,6 @@ speedtestdotnet:
 #    radius: 250
 #    icon: mdi:worker
     
-weather:
-  - platform: darksky
-    api_key: !secret darksky_key
-
 group:
   Lights:
     entities:
@@ -272,18 +268,9 @@ binary_sensor:
     province: MI
 
 sensor:
-  - platform: xfinity
-    username: !secret xfinity_email
-    password: !secret xfinity_password
-
-  - platform: darksky
-    api_key: !secret darksky_key
-    forecast:
-      - 0
-    monitored_conditions:
-      - summary
-      - icon
-      - temperature
+  # - platform: xfinity
+  #   username: !secret xfinity_email
+  #   password: !secret xfinity_password
   
   - platform: systemmonitor
     resources:
@@ -325,5 +312,8 @@ sensor:
     value_template: '{{ value | multiply(0.001) | round(1) }}'
     scan_interval: 60
     
-shell_command:
-  git_pull: id > banana.txt; git config core.sshCommand 'ssh -i ./.ssh/id_ed25519'; git pull
+# shell_command:
+  # git_pull: id > banana.txt; git config core.sshCommand 'ssh -i ./.ssh/id_ed25519'; git pull
+
+
+
