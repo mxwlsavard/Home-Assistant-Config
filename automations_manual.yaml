@@ -49,18 +49,6 @@
       title: "Snapshot Failed."
       message: "Name: {{ trigger.event.data.name }}\nError: {{ trigger.event.data.error }}"
 
-- id: "Pull config from Github"
-  alias: "Pull Config From Github"
-  trigger:
-    platform: webhook
-    webhook_id: git-pull
-  action:
-    - service: hassio.addon_start
-      data:
-        addon: core_git_pull
-    - delay: 00:00:10
-    - service: homeassistant.restart
-
 - id: 'NightlySnapshot'
   alias: Nightly Snapshot
   description: ''
