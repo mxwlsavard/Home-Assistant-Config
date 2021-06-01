@@ -89,15 +89,6 @@ mobile_app:
   
 breaking_changes:
 
-circadian_lighting:
-  sunset_offset: '00:30'
-  sunrise_offset: '1:00'
-  #sunset_time: '11:00:00'
-  min_colortemp: 2200
-  #max_colortemp: 5200
-  interval: 300
-  transition: 300
-
 # Cloud
 cloud:
 
@@ -136,6 +127,15 @@ logger:
     
 auto_backup:
   auto_purge: true
+  
+circadian_lighting:
+#   sunset_offset: '00:30'
+#   sunrise_offset: '1:00'
+#   #sunset_time: '11:00:00'
+#   min_colortemp: 2200
+#   #max_colortemp: 5200
+#   interval: 300
+#   transition: 300
 
 lifx:
   light:
