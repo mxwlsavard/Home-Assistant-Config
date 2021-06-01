@@ -146,11 +146,11 @@ lifx:
     - server: 192.168.30.10
       broadcast: 192.168.30.73
 
-remote:
-  - platform: harmony
-    name: Harmony Hub
-    host: 192.168.30.14
-    activity: TV
+# remote:
+#   - platform: harmony
+#     name: Harmony Hub
+#     host: 192.168.30.14
+#     activity: TV
     
 input_boolean:
   #start_car_bool:
