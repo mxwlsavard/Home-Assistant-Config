@@ -49,7 +49,7 @@ homekit:
       - switch.kitchen_chilies
       - input_boolean.stereo_mute
       - input_boolean.stereo_unmute
-      - switch.circadian_lighting_circadian_lighting
+#      - switch.circadian_lighting_circadian_lighting
       - input_boolean.turn_stereo_down_vol_bool
       - input_boolean.turn_up_stereo_vol_bool
       - light.hallway_1
@@ -89,6 +89,15 @@ mobile_app:
   
 breaking_changes:
 
+#circadian_lighting:
+#  sunset_offset: '00:30'
+#  sunrise_offset: '1:00'
+#  #sunset_time: '11:00:00'
+#  min_colortemp: 2200
+#  #max_colortemp: 5200
+#  interval: 300
+#  transition: 300
+
 # Cloud
 cloud:
 
@@ -121,7 +130,7 @@ recorder:
 logger:
   default: warning
   logs:
-    custom_components.circadian_lighting: warning
+#    custom_components.circadian_lighting: warning
     #custom_components.circadian_lighting.sensor: debug
     homeassistant.components.shell_command: debug
     
@@ -187,33 +196,26 @@ tplink:
 
 switch:
 
-  - platform: circadian_lighting
-#    lights_rgb:
-    lights_ct:
-      - light.bedroom_1
-      - light.bedroom_2
-      - light.dinette_1
-      - light.dinette_2
-      - light.brighty
-      - light.hallway_1
+#  - platform: circadian_lighting
 #    lights_ct:
-      - light.lampy
-      - light.lighty
-      - light.light_strippy
-      - light.hallway_2
-      - light.hallway_3
-      - light.dinette
-      #- light.office_1
-      #- light.office_2
-      - light.living_room_1
-      - light.hue_play_1
-      - light.hue_play_2
-    min_brightness: 20
-
-speedtestdotnet:
-  scan_interval:
-    minutes: 30
-    hours: 10
+#      - light.bedroom_1
+#      - light.bedroom_2
+#      - light.dinette_1
+#      - light.dinette_2
+#      - light.brighty
+#      - light.hallway_1
+#      - light.lampy
+#      - light.lighty
+#      - light.light_strippy
+#      - light.hallway_2
+#      - light.hallway_3
+#      - light.dinette
+#      #- light.office_1
+#      #- light.office_2
+#      - light.living_room_1
+#      - light.hue_play_1
+#      - light.hue_play_2
+#    min_brightness: 20
 
 #zone:
 #  - name: Work
