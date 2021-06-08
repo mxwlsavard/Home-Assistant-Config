@@ -137,7 +137,7 @@ logger:
 auto_backup:
   auto_purge: true
   
-# circadian_lighting:
+ circadian_lighting:
 #   sunset_offset: '00:30'
 #   sunrise_offset: '1:00'
 #   #sunset_time: '11:00:00'
