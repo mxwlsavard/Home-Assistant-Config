@@ -196,25 +196,25 @@ tplink:
 
 switch:
 
-  - platform: circadian_lighting
-    lights_ct:
-      - light.bedroom_1
-      - light.bedroom_2
+#  - platform: circadian_lighting
+#    lights_ct:
+#      - light.bedroom_1
+#      - light.bedroom_2
 #      - light.dinette_1
 #      - light.dinette_2
 #      - light.brighty
-      - light.hallway_1
-      - light.lampy
+#      - light.hallway_1
+#      - light.lampy
 #      - light.lighty
-      - light.light_strippy
-      - light.hallway_2
-      - light.hallway_3
+#      - light.light_strippy
+#      - light.hallway_2
+#      - light.hallway_3
 #      - light.dinette
 #      #- light.office_1
 #      #- light.office_2
-      - light.living_room_1
-      - light.hue_play_1
-      - light.hue_play_2
+#      - light.living_room_1
+#      - light.hue_play_1
+#      - light.hue_play_2
 #    min_brightness: 20
 
 #zone:
