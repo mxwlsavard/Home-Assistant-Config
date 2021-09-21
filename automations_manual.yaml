@@ -42,7 +42,7 @@
   alias: "Notify Snapshot Failure"
   trigger:
     platform: event
-    event_type: auto_backup.snapshot_failed
+    event_type: auto_backup.backup_failed
   action:
     service: persistent_notification.create
     data_template:
@@ -71,4 +71,4 @@
       exclude:
         addons:
           - MariaDB
-    service: auto_backup.snapshot_full
+    service: auto_backup.backup_full
