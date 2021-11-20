@@ -189,10 +189,10 @@ tplink:
 
 switch:
 
-#  - platform: circadian_lighting
-#    lights_ct:
-#      - light.bedroom_1
-#      - light.bedroom_2
+  - platform: circadian_lighting
+    lights_ct:
+      - light.bedroom_1
+      - light.bedroom_2
 #      - light.dinette_1
 #      - light.dinette_2
 #      - light.brighty
